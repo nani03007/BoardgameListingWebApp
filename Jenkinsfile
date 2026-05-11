@@ -52,15 +52,16 @@ pipeline {
             }
         }
 
-        stage('Docker Push') {
-            steps {
-                withDockerRegistry(
-                    credentialsId: 'docker-cred'
-                ) {
-                    sh 'docker push javaexpress/demo'
-                }
-            }
-        }
+stage('Docker Push') {
+    steps {
+      withDockerRegistry(
+    credentialsId: 'Docker',
+    url: 'https://index.docker.io/v1/'
+) {
+    sh 'docker push veera03007/k8:latest'
+}
+    }
+}
 
         stage('Deploy To Kubernetes') {
             steps {
