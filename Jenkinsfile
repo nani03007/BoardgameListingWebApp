@@ -18,7 +18,7 @@ tools {
                     globalMavenSettingsConfig: 'global-settings'
                 ) {
 
-                    sh 'mvn clean deploy'
+                    sh 'mvn clean install'
 
                 }
 
