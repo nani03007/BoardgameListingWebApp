@@ -1,11 +1,14 @@
-FROM adoptopenjdk/openjdk11
-  
+# Use lightweight Java 11 runtime
+FROM eclipse-temurin:11-jre
+
+# Application directory inside container
+WORKDIR /app
+
+# Copy generated jar file
+COPY target/app.jar app.jar
+
+# Expose application port
 EXPOSE 8080
- 
-ENV APP_HOME /usr/src/app
 
-COPY target/database_service_project-2.0.0.jar $APP_HOME/app.jar
-
-WORKDIR $APP_HOME
-
-CMD ["java", "-jar", "app.jar"]
+# Start application
+ENTRYPOINT ["java", "-jar", "app.jar"]
