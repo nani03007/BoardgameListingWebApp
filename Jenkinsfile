@@ -13,7 +13,7 @@ tools {
 
             steps {
 
-                withmaven(
+                withMaven(
                     maven: 'maven2',
                     globalMavenSettingsConfig: 'global-settings'
                 ) {
@@ -44,7 +44,7 @@ tools {
 
             steps {
 
-                withmaven(
+                withMaven(
                     maven: 'maven2',
                     globalMavenSettingsConfig: 'global-settings'
                 ) {
