@@ -1,33 +1,44 @@
 apiVersion: apps/v1
 kind: Deployment
+
 metadata:
-  name: boardgame-deployment
+  name: springboot-deployment
+  labels:
+    app: springboot
+
 spec:
+  replicas: 2
+
   selector:
     matchLabels:
-      app: boardgame
-  replicas: 2 
+      app: springboot
+
   template:
     metadata:
       labels:
-        app: boardgame
+        app: springboot
+
     spec:
       containers:
-        - name: boardgame
-          image: javaexpress/boardgame:latest
-          imagePullPolicy: Always
-          ports:
-            - containerPort: 8080
+      - name: springboot-container
+        image: veera03007/k8:latest
+
+        ports:
+        - containerPort: 8080
 ---
-apiVersion: v1 
-kind: Service 
+apiVersion: v1
+kind: Service
+
 metadata:
-  name: boardgame-ssvc
+  name: springboot-svc
+
 spec:
   selector:
-    app: boardgame
+    app: springboot
+
   ports:
-    - protocol: "TCP"
+    - protocol: TCP
       port: 80
-      targetPort: 8080 
+      targetPort: 8080
+
   type: LoadBalancer
