@@ -11,8 +11,8 @@ pipeline {
 
         stage('Git Clone') {
             steps {
-                git credentialsId: 'git-cred',
-                url: 'YOUR_GITHUB_REPO'
+               git credentialsId: 'github',
+               url: 'https://github.com/nani03007/BoardgameListingWebApp.git'
             }
         }
 
